@@ -1,0 +1,66 @@
+-->Things to Do before Program
+Before creating the program that prints any file's content in reverse order. Let's first create a file with some content inside it. For example let's write the following content in any text editor say NotePad:
+
+My Captain
+
+the current directory for C compiler
+Save the file with mycaptain.txt as name, in the current directory. Here is the screenshot of file along with its content, and the folder where the file mycaptain.txt is created and saved:
+
+Print File Content in Reverse Order
+The question is, write a program in C that displays the content of a file in reverse order. Filename should be entered at run-time. The answer to this question is:
+
+
+
+
+CODE
+
+#include<stdio.h>
+#include<conio.h>
+int main()
+{
+    FILE *fp;
+    char ch, fname[30], newch[500];
+    int i=0, j, COUNT=0;
+    printf("Enter the filename with extension: ");
+    gets(fname);
+    fp = fopen(fname, "r");
+    if(!fp)
+    {
+        printf("Error in opening the file...\nExiting...");
+        getch();
+        return 0;
+    }
+    printf("\nThe original content is:\n\n");
+    ch = getc(fp);
+    while(ch != EOF)
+    {
+        COUNT++;
+        putchar(ch);
+        newch[i] = ch;
+        i++;
+        ch = getc(fp);
+    }
+    printf("\n\n\n");
+    printf("The content in reverse order is:\n\n");
+    for(j=(COUNT-1); j>=0; j--)
+    {
+        ch = newch[j];
+        printf("%c", ch);
+    }
+    printf("\n");
+    getch();
+    return 0;
+}
+
+
+
+
+This program will ask from user to enter any filename along with its extension that present inside the current directory (where the above source code is saved). Because we have already created a file named mycaptain.txt, and placed it inside the current directory. Therefore we can operate on that file for practical purpose to see how the output of above program works.
+
+
+
+
+Now supply the name of the file that is created earlier say mycaptain.txt and press ENTER key to see the content in original order first and then the same content in reverse order at last of the output as shown here:
+
+niatpaC yM
+
